@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqt83lnifkips"]
+
+[ext_resource type="Texture2D" uid="uid://deao1yc88cv0u" path="res://assets/img/rescatebg.png" id="1_6gqhb"]
+[ext_resource type="FontFile" uid="uid://d01l2o17g7jcc" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_kbhqf"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 1928.0
+offset_bottom = 1069.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_6gqhb")
+
+[node name="PlayButton" type="Button" parent="CanvasLayer"]
+offset_left = 412.0
+offset_top = 265.0
+offset_right = 712.0
+offset_bottom = 365.0
+theme_override_fonts/font = ExtResource("2_kbhqf")
+theme_override_font_sizes/font_size = 100
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/PlayButton"]
+offset_left = 56.0
+offset_top = 126.0
+offset_right = 252.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("2_kbhqf")
+theme_override_font_sizes/font_size = 80
+text = "Quit"
