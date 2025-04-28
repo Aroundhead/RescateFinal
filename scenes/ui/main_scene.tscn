@@ -31,6 +31,7 @@ theme_override_font_sizes/font_size = 100
 text = "PLAY"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/PlayButton"]
+layout_mode = 0
 offset_left = 56.0
 offset_top = 126.0
 offset_right = 252.0

@@ -2,7 +2,7 @@ extends Control
 
 @onready var texture_rect = $TextureRect
 @onready var label = $VBoxContainer/NinePatchRect/Label
-@onready var skip_button = $VBoxContainer/NinePatchRect/Button
+@onready var skip_button = $VBoxContainer/NinePatchRect/skipButton
 @onready var timer = $Timer
 
 # Cinematic frames
