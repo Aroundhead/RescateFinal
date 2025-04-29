@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://cn8huj0125u"]
+[gd_scene load_steps=13 format=4 uid="uid://cn8huj0125u"]
 
 [ext_resource type="PackedScene" uid="uid://bs3hu52t7gb6e" path="res://scenes/player/player.tscn" id="1_1pwbc"]
+[ext_resource type="Script" uid="uid://di06gpxghykhu" path="res://scenes/levels/level_1.gd" id="1_7d7pp"]
 [ext_resource type="Texture2D" uid="uid://4035hjgae05y" path="res://assets/img/1.png" id="1_fh0io"]
 [ext_resource type="Texture2D" uid="uid://dht4pq21u6ny8" path="res://assets/img/2.png" id="2_7d7pp"]
+[ext_resource type="PackedScene" uid="uid://crewcka1sorgj" path="res://scenes/enemies/enemy_soldier.tscn" id="2_e5nfq"]
 [ext_resource type="Texture2D" uid="uid://eiaf4cs8r34f" path="res://assets/img/level1_tiles.png" id="2_j08sa"]
 [ext_resource type="Texture2D" uid="uid://c7nn322emck1q" path="res://assets/img/3.png" id="3_e5nfq"]
 [ext_resource type="Script" uid="uid://bvfm6k7ojxfqw" path="res://scripts/UI/camera_2d.gd" id="3_x4si1"]
@@ -140,6 +142,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x4si1")
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_7d7pp")
+enemy_scene = ExtResource("2_e5nfq")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -158,8 +162,8 @@ region_rect = Rect2(186, 114, 203, 96)
 motion_mirroring = Vector2(720, 0)
 
 [node name="TextureRect" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
-position = Vector2(259, 378.596)
-scale = Vector2(1.24653, 2.84343)
+position = Vector2(235.5, 446.096)
+scale = Vector2(1.32813, 2.10974)
 texture = ExtResource("2_7d7pp")
 region_enabled = true
 region_rect = Rect2(0, 48, 576, 184)
@@ -207,3 +211,6 @@ position = Vector2(-4, -49)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 script = ExtResource("3_x4si1")
+
+[node name="EnemySpawnMarker" type="Marker2D" parent="."]
+position = Vector2(329, 565)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bs3hu52t7gb6e"]
+[gd_scene load_steps=40 format=3 uid="uid://bs3hu52t7gb6e"]
 
 [ext_resource type="Texture2D" uid="uid://8sgrjnps1ytt" path="res://assets/sprites/player/Idle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://04oxn5e71iv" path="res://scripts/player/player.gd" id="1_75vfm"]
@@ -242,7 +242,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
 size = Vector2(8.5, 66)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0owmy"]
+radius = 31.0644
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_75vfm")
 bullet_scene = ExtResource("2_0owmy")
 
@@ -260,3 +263,9 @@ shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
 position = Vector2(18, -37)
+
+[node name="PlayerDetectionArea" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(1, -31)
+shape = SubResource("CircleShape2D_0owmy")
