@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 @export var speed = 200
 @export var gravity = 500
-@export var jump_force := -200
+@export var jump_force := -300
 @export var bullet_scene: PackedScene
 @export var shoot_interval := 0.1  # 🚀 NUEVO: Tiempo entre disparos (0.1s para metralleta)
 @onready var bullet_spawn = $BulletSpawn
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var bullet_spawn_offset_right = Vector2(18, -37)
-var bullet_spawn_offset_left = Vector2(-18, -37)
+var bullet_spawn_offset_right = Vector2(30, -1)
+var bullet_spawn_offset_left = Vector2(-30, -1)
 
 var is_shooting = false  # 🚀 NUEVO
 var shoot_timer = 0.0  # 🚀 NUEVO

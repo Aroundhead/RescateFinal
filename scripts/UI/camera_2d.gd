@@ -1,7 +1,7 @@
 extends Camera2D
 
 @export var zoom_speed := 0.1
-@export var min_zoom := 2.3
+@export var min_zoom := 0.3
 @export var max_zoom := 4.0
 
 func _input(event):

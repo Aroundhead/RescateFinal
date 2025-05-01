@@ -72,13 +72,13 @@ func face_player():
 		# Flip visual
 		sprite.flip_h = dir
 
-		# Flip spawn
+		# Flip BulletSpawn
 		var spawn_offset = bullet_spawn.position
-		spawn_offset.x = abs(spawn_offset.x) * (dir ? -1 : 1)
+		spawn_offset.x = abs(spawn_offset.x) * (-1 if dir else 1)
 		bullet_spawn.position = spawn_offset
 
-		# Flip ray
-		floor_ray.position.x = abs(floor_ray.position.x) * (dir ? -1 : 1)
+		# Flip RayCast
+		floor_ray.position.x = abs(floor_ray.position.x) * (-1 if dir else 1)
 
 func shoot():
 	if bullet_scene and player_reference:
