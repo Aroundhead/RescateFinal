@@ -188,9 +188,3 @@ offset_top = -1465.0
 offset_right = 1080.0
 offset_bottom = 715.0
 texture = ExtResource("6_m00rq")
-
-[node name="EnemySpawnMarker2" type="Marker2D" parent="."]
-position = Vector2(2460, 340)
-
-[node name="EnemySpawnMarker3" type="Marker2D" parent="."]
-position = Vector2(3119, 340)

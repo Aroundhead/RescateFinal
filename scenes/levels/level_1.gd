@@ -1,10 +1,13 @@
 extends Node2D
 
-@onready var enemy_spawn = $EnemySpawnMarker  # Ajusta el path si es necesario
-@export var enemy_scene: PackedScene  # Asigna la escena del enemigo en el Inspector
+@export var enemy_scene: PackedScene
 
 func _ready():
-	if enemy_scene:
-		var enemy = enemy_scene.instantiate()
-		add_child(enemy)
-		enemy.global_position = enemy_spawn.global_position
+	if not enemy_scene:
+		return
+
+	for child in get_children():
+		if child.name.begins_with("EnemySpawnMarker"):
+			var enemy = enemy_scene.instantiate()
+			add_child(enemy)
+			enemy.global_position = child.global_position

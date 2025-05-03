@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bs3hu52t7gb6e"]
+[gd_scene load_steps=46 format=3 uid="uid://bs3hu52t7gb6e"]
 
 [ext_resource type="Texture2D" uid="uid://8sgrjnps1ytt" path="res://assets/sprites/player/Idle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://04oxn5e71iv" path="res://scripts/player/player.gd" id="1_75vfm"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bsglj4wg0c50g" path="res://assets/sprites/player/Run.png" id="2_dovo2"]
 [ext_resource type="Texture2D" uid="uid://q4jjh0jin8o4" path="res://assets/sprites/player/Shot_1.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://r3bdadbx1mao" path="res://assets/sprites/player/Walk.png" id="4_p47bc"]
+[ext_resource type="Texture2D" uid="uid://b18j0ksde5rsq" path="res://assets/sprites/player/Dead.png" id="5_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="8_qek5x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28m0y"]
 atlas = ExtResource("1_p47bc")
@@ -47,6 +49,22 @@ region = Rect2(640, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
 atlas = ExtResource("1_8afob")
 region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tffgl"]
+atlas = ExtResource("5_5gtgg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk8ii"]
+atlas = ExtResource("5_5gtgg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mf0n"]
+atlas = ExtResource("5_5gtgg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
+atlas = ExtResource("5_5gtgg")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
 atlas = ExtResource("2_dovo2")
@@ -167,6 +185,38 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tffgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tffgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tffgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk8ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mf0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mf0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvnv")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 0.1,
 "texture": SubResource("AtlasTexture_5gtgg")
 }, {
@@ -250,22 +300,37 @@ script = ExtResource("1_75vfm")
 bullet_scene = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -64)
+position = Vector2(2, -31)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"shot"
-frame_progress = 0.554677
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -33)
 shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
-position = Vector2(18, -37)
+position = Vector2(21, -4)
 
 [node name="PlayerDetectionArea" type="Area2D" parent="." groups=["player"]]
+position = Vector2(3, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
 position = Vector2(1, -31)
 shape = SubResource("CircleShape2D_0owmy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("8_qek5x")]
+offset_left = 23.0
+offset_top = 29.0
+offset_right = 245.0
+offset_bottom = 62.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 143.0
+offset_top = 4.0
+offset_right = 195.0
+offset_bottom = 27.0
+
+[connection signal="area_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_area_entered"]

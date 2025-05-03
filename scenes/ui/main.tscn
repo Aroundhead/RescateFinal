@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbdtgcq3odht3"]
+
+[ext_resource type="Texture2D" uid="uid://cwj0fhc0kjc3h" path="res://assets/img/5.png" id="1_2p1s2"]
+[ext_resource type="PackedScene" uid="uid://cn8huj0125u" path="res://scenes/levels/Level1.tscn" id="2_02nsg"]
+[ext_resource type="Script" uid="uid://dsg3o64hf6ntj" path="res://scripts/UI/texture_rect.gd" id="2_vspwy"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground/ParallaxLayer4"]
+offset_left = -3.0
+offset_top = -87.0
+offset_right = 573.0
+offset_bottom = 237.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_2p1s2")
+script = ExtResource("2_vspwy")
+
+[node name="Level1" parent="." instance=ExtResource("2_02nsg")]
