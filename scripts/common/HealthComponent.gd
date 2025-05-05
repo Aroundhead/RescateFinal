@@ -55,3 +55,13 @@ func _on_animation_finished():
 				if is_instance_valid(owner):
 					owner.queue_free()
 			)
+			
+func heal(amount: int):
+	current_health = min(current_health + amount, max_health)
+	update_health_bar()
+
+func update_health_bar():
+	if owner.has_node("CanvasLayer/HealthBar"):
+		owner.get_node("CanvasLayer/HealthBar").health = current_health
+	elif owner.has_node("HealthBar"):
+		owner.get_node("HealthBar").health = current_health

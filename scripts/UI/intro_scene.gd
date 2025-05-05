@@ -18,10 +18,10 @@ var frames = [
 var narrations = [
 	"La guerra nos forjó...",
 	"En la batalla forjamos lazos eternos...",
-	"El hogar se siente vacío ahora...",
+	"Hace tiempo que ella ya no esta aqui conmigo...",
 	"Algo no está bien esta noche...",
 	"Una coordenada desconocida aparece...",
-	"Mi determinación es inquebrantable."
+	"No hay forma en la que no reconozca esa ubicación."
 ]
 
 var current_frame = 0

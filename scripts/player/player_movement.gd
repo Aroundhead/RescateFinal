@@ -17,6 +17,7 @@ func update(delta):
 	var direction = Vector2.ZERO
 
 	if Input.is_action_just_pressed("ui_up") and player.is_on_floor() and not shooter.is_shooting:
+		print("🚀 Saltando con fuerza:", player.jump_force)
 		player.velocity.y = player.jump_force
 
 	if not shooter.is_shooting:
