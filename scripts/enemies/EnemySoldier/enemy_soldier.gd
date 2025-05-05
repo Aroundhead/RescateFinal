@@ -38,7 +38,10 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 
-	if not shooter.is_reloading and not player_in_range:
+	if player_in_range:
+		velocity.x = 0
+		face_player()
+	else:
 		patrol.update(delta)
 
 	shooter.update(delta)

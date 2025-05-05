@@ -2,7 +2,7 @@ extends Area2D
 
 @export_enum("jump_boost", "speed_boost", "health_restore", "weapon_upgrade") var power_type: String
 @export var value: float = 1.5  # multiplicador o cantidad
-@onready var icon = $Icon  # Sprite2D hijo
+@onready var icon = $Sprite2D
 
 # Diccionario con las texturas de cada tipo
 var powerup_textures = {
@@ -23,6 +23,9 @@ func _ready():
 
 	print("🧪 PowerUp READY → tipo:", power_type, ", valor:", value)
 
+func _process(delta):
+	icon.material.set_shader_parameter("time", Time.get_ticks_msec() / 1000.0)
+	
 func _on_area_entered(area):
 	print("🚀 Área tocada:", area.name)
 

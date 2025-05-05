@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38ev746ijrvw"
-path="res://.godot/imported/Attacck.png-c2e27ddb15646ef127dce2f42bc886ea.ctex"
+uid="uid://ci0lyj6nq5ub0"
+path="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_02.png-b018e1c2694c67ca292e361672b8c862.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/Attacck.png"
-dest_files=["res://.godot/imported/Attacck.png-c2e27ddb15646ef127dce2f42bc886ea.ctex"]
+source_file="res://assets/sprites/player/enemies/All_Fire_Bullet_Pixel_16x16_02.png"
+dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_02.png-b018e1c2694c67ca292e361672b8c862.ctex"]
 
 [params]
 
