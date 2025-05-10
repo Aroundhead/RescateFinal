@@ -10,22 +10,28 @@ extends CharacterBody2D
 @onready var detection_area = $detectionarea
 @onready var hitbox = $HitBox
 @onready var floor_ray = $FloorRay
-@onready var attack_area = $AttackArea  # ✅ NUEVO
+@onready var attack_area = $AttackArea
+@onready var health_bar = $HealthBar  # Asegúrate de tener este nodo
 
 var patrol_direction := 1
 var patrol_distance := 50
 var start_position := Vector2.ZERO
 var player_in_range := false
 var player_reference: Node2D = null
-var health := 0
+
+# COMPONENTES
+var health
+
 var is_reloading := false
 var can_attack := true
 
 func _ready():
 	start_position = global_position
-	health = max_health
 	sprite.play("Walk")
 	floor_ray.position.x = abs(floor_ray.position.x) * patrol_direction
+
+	health = preload("res://scripts/common/HealthComponent.gd").new(self)
+	health.init()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -38,12 +44,10 @@ func _physics_process(delta):
 		var direction = sign(player_reference.global_position.x - global_position.x)
 
 		if distance > attack_distance:
-			# Persigue al jugador
 			velocity.x = direction * chase_speed
 			sprite.play("Run")
 			face_player()
 		else:
-			# Ataca si está cerca
 			velocity.x = 0
 			sprite.play("Attack")
 			attack_player()
@@ -95,12 +99,11 @@ func _on_detection_area_area_exited(area: Area2D):
 		player_reference = null
 		print("👋 Jugador fuera de rango.")
 
-func _on_hitbox_body_entered(body):
-	if body.is_in_group("PlayerBullet"):
-		health -= 1
-		body.queue_free()
-		if health <= 0:
-			die()
+func _on_hitbox_area_entered(area: Area2D):
+	var parent = area.get_parent()
+	if parent.is_in_group("PlayerBullet"):
+		health.take_damage(1)
+		parent.queue_free()
 
 func die():
 	sprite.play("Dead")

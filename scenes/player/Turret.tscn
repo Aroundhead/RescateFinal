@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://rh3mocxus88e"]
+[gd_scene load_steps=8 format=3 uid="uid://rh3mocxus88e"]
 
 [ext_resource type="Texture2D" uid="uid://chv5x1ubmqijn" path="res://visuals/turret_BASE.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://cot70r387ydb2" path="res://visuals/turret_FACE.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://dfalxxuommllx" path="res://scenes/player/Bullet.tscn" id="2_ccmgc"]
 [ext_resource type="Script" uid="uid://b456eirt0mdwp" path="res://scripts/enemies/Turret.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="5_npjx8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccmgc"]
-radius = 521.018
+radius = 389.012
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_npjx8"]
+radius = 19.0263
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("3")
@@ -30,6 +34,18 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_ccmgc")
 
+[node name="HealthBar" parent="." instance=ExtResource("5_npjx8")]
+offset_left = -21.0
+offset_top = -35.0
+offset_right = 22.0
+offset_bottom = -19.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_npjx8")
+
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_area_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

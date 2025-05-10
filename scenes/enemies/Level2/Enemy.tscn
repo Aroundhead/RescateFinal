@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bio4wqxbgby7x"]
+[gd_scene load_steps=57 format=3 uid="uid://bio4wqxbgby7x"]
 
 [ext_resource type="Script" uid="uid://bw1ybsp4bgk4a" path="res://scenes/enemies/Level2/enemy.gd" id="1_3x226"]
 [ext_resource type="Texture2D" uid="uid://bihphaxw7btw3" path="res://assets/sprites/level2Enemies/Attack_1.png" id="1_otlbw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnflbpcrnb8fs" path="res://assets/sprites/level2Enemies/Jump.png" id="4_rv0kh"]
 [ext_resource type="Texture2D" uid="uid://dvfloe4q3hi08" path="res://assets/sprites/level2Enemies/Run.png" id="5_cb27h"]
 [ext_resource type="Texture2D" uid="uid://cwiqarxpagvyy" path="res://assets/sprites/level2Enemies/walk.png" id="6_lwm74"]
+[ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="8_kng6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x226"]
 size = Vector2(661.857, 75.7143)
@@ -391,5 +392,12 @@ shape = SubResource("RectangleShape2D_412si")
 
 [node name="FloorRay" type="RayCast2D" parent="."]
 
+[node name="HealthBar" parent="." instance=ExtResource("8_kng6l")]
+offset_left = -25.7143
+offset_top = -30.0
+offset_right = 28.2857
+offset_bottom = -20.0
+
 [connection signal="area_entered" from="AttackArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_detection_area_area_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hitbox_area_entered"]

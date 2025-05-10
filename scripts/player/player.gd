@@ -57,7 +57,7 @@ func respawn():
 		global_position = last_checkpoint_position
 		print("📍 Respawn en último checkpoint:", last_checkpoint_position)
 	else:
-		global_position = Vector2(4000, 100)  # Posición inicial predeterminada
+		global_position = Vector2(100, 100)  # Posición inicial predeterminada
 		print("🔁 Respawn en punto inicial")
 
 func _unhandled_input(event):
