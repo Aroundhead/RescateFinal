@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38ev746ijrvw"
-path="res://.godot/imported/Attacck.png-93bee350f7e99a5410e62fa266df0eca.ctex"
+uid="uid://8qi71us6pnsq"
+path="res://.godot/imported/Water+.png-ac28e7df4cb6c281d1853a5468f4eefb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Enemies/Attacck.png"
-dest_files=["res://.godot/imported/Attacck.png-93bee350f7e99a5410e62fa266df0eca.ctex"]
+source_file="res://assets/img/Level2/Water+.png"
+dest_files=["res://.godot/imported/Water+.png-ac28e7df4cb6c281d1853a5468f4eefb.ctex"]
 
 [params]
 

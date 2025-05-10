@@ -1,12 +1,12 @@
 [gd_scene load_steps=44 format=3 uid="uid://crewcka1sorgj"]
 
 [ext_resource type="Script" uid="uid://dhhsbr8orxt8y" path="res://scripts/enemies/enemy_soldier.gd" id="1_ait0q"]
-[ext_resource type="Texture2D" uid="uid://lsfsj7wnnw86" path="res://assets/sprites/enemies/Shot_1.png" id="1_cllg5"]
-[ext_resource type="PackedScene" uid="uid://1fd0qdw5x8sa" path="res://bullet.tscn" id="2_sm2vj"]
-[ext_resource type="Texture2D" uid="uid://d1ppeou8jeypw" path="res://assets/sprites/enemies/Dead.png" id="2_vvqcu"]
-[ext_resource type="Texture2D" uid="uid://muw4v51u7fwe" path="res://assets/sprites/enemies/Idle.png" id="3_ait0q"]
-[ext_resource type="Texture2D" uid="uid://qnbnjg2rikye" path="res://assets/sprites/enemies/Walk.png" id="4_sm2vj"]
-[ext_resource type="Texture2D" uid="uid://de6ugpcc4gvsg" path="res://assets/sprites/enemies/Recharge.png" id="4_vvqcu"]
+[ext_resource type="Texture2D" uid="uid://lsfsj7wnnw86" path="res://assets/sprites/Enemies/Shot_1.png" id="1_cllg5"]
+[ext_resource type="PackedScene" uid="uid://1fd0qdw5x8sa" path="res://scenes/bullet.tscn" id="2_sm2vj"]
+[ext_resource type="Texture2D" uid="uid://d1ppeou8jeypw" path="res://assets/sprites/Enemies/Dead.png" id="2_vvqcu"]
+[ext_resource type="Texture2D" uid="uid://muw4v51u7fwe" path="res://assets/sprites/Enemies/Idle.png" id="3_ait0q"]
+[ext_resource type="Texture2D" uid="uid://qnbnjg2rikye" path="res://assets/sprites/Enemies/Walk.png" id="4_sm2vj"]
+[ext_resource type="Texture2D" uid="uid://de6ugpcc4gvsg" path="res://assets/sprites/Enemies/Recharge.png" id="4_vvqcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wdtj"]
 size = Vector2(24, 72)

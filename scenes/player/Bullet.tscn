@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfalxxuommllx"]
+
+[ext_resource type="Script" uid="uid://cbrne2ad808h6" path="res://scenes/player/Bullet.gd" id="1_sttck"]
+[ext_resource type="Texture2D" uid="uid://bqwxbcsqy4vek" path="res://visuals/turret_BULLET.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 5.51146
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_sttck")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="VisibilityNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

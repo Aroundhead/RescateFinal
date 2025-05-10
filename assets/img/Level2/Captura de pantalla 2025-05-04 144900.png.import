@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38ev746ijrvw"
-path="res://.godot/imported/Attacck.png-93bee350f7e99a5410e62fa266df0eca.ctex"
+uid="uid://cd1buvydpprt"
+path="res://.godot/imported/Captura de pantalla 2025-05-04 144900.png-2b898b5e5f43b0bd883ba7415c229508.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Enemies/Attacck.png"
-dest_files=["res://.godot/imported/Attacck.png-93bee350f7e99a5410e62fa266df0eca.ctex"]
+source_file="res://assets/img/Level2/Captura de pantalla 2025-05-04 144900.png"
+dest_files=["res://.godot/imported/Captura de pantalla 2025-05-04 144900.png-2b898b5e5f43b0bd883ba7415c229508.ctex"]
 
 [params]
 

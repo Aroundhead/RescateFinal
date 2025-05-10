@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 200
+@export var speed = 120
 @export var gravity = 500
 @export var jump_force := -300
 @export var bullet_scene: PackedScene
@@ -13,10 +13,25 @@ var bullet_spawn_offset_left = Vector2(-30, -1)
 
 var is_shooting = false  # 🚀 NUEVO
 var shoot_timer = 0.0  # 🚀 NUEVO
+var health := 5
+
 
 func _ready():
+	add_to_group("player")
 	sprite.speed_scale = 1.7
 	bullet_spawn.position = bullet_spawn_offset_right
+	
+
+func take_damage(amount: int):
+	health -= amount
+	print("💔 ¡Me pegaron! Salud actual:", health)
+
+	if health <= 0:
+		die()
+
+func die():
+	print("💀 El jugador ha muerto")
+	queue_free()  # o animación de muerte
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO

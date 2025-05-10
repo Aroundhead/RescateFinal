@@ -60,6 +60,11 @@ shoot={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="RayCast2D"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

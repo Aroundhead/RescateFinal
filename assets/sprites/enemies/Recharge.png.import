@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://de6ugpcc4gvsg"
-path="res://.godot/imported/Recharge.png-7721ac92368437a0ae29df5176c46365.ctex"
+path="res://.godot/imported/Recharge.png-f2a29be3d9bfd024958fd10cd185338b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/Recharge.png"
-dest_files=["res://.godot/imported/Recharge.png-7721ac92368437a0ae29df5176c46365.ctex"]
+source_file="res://assets/sprites/Enemies/Recharge.png"
+dest_files=["res://.godot/imported/Recharge.png-f2a29be3d9bfd024958fd10cd185338b.ctex"]
 
 [params]
 
