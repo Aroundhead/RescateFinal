@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38ev746ijrvw"
-path="res://.godot/imported/Attacck.png-79540e6328e72b0ea729bb84142eacc3.ctex"
+uid="uid://n1pom6ac8m8b"
+path="res://.godot/imported/tree2.png-9576e8a5d2366d883a73bcc3e8ca285f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/enemies/Attacck.png"
-dest_files=["res://.godot/imported/Attacck.png-79540e6328e72b0ea729bb84142eacc3.ctex"]
+source_file="res://assets/img/Level2/tree2.png"
+dest_files=["res://.godot/imported/tree2.png-9576e8a5d2366d883a73bcc3e8ca285f.ctex"]
 
 [params]
 

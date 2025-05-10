@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de6ugpcc4gvsg"
-path="res://.godot/imported/Recharge.png-882e4b9c039592319d350ac8b09d09c2.ctex"
+uid="uid://cnflbpcrnb8fs"
+path="res://.godot/imported/Jump.png-c0b1ce179f064a8a8a6c33f08f41f487.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/enemies/Recharge.png"
-dest_files=["res://.godot/imported/Recharge.png-882e4b9c039592319d350ac8b09d09c2.ctex"]
+source_file="res://assets/sprites/level2Enemies/Jump.png"
+dest_files=["res://.godot/imported/Jump.png-c0b1ce179f064a8a8a6c33f08f41f487.ctex"]
 
 [params]
 

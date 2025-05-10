@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://q582ir8s0xt4"]
+
+[ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="1_ve7g5"]
+[ext_resource type="Script" uid="uid://dkaxc2cbj2dsk" path="res://scripts/enemies/enemy_boss.gd" id="1_w6msd"]
+[ext_resource type="Texture2D" uid="uid://bjox2tx7qfl2h" path="res://assets/sprites/enemies/EnemyBoss1/bombardilo.png" id="2_2ir1l"]
+[ext_resource type="PackedScene" uid="uid://drvggg35hdkek" path="res://scenes/enemies/enemy_boss_bullet.tscn" id="2_dhkxw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnhuo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhkxw"]
+
+[node name="EnemyBoss" type="CharacterBody2D"]
+position = Vector2(-1, 2)
+script = ExtResource("1_w6msd")
+bullet_scene = ExtResource("2_dhkxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+shape = SubResource("CircleShape2D_dnhuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.508333, 0.510417)
+texture = ExtResource("2_2ir1l")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(51, 39)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("1_ve7g5")]
+offset_left = 787.0
+offset_top = 25.0
+offset_right = 1027.0
+offset_bottom = 62.0
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_dhkxw")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

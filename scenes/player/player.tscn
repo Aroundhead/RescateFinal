@@ -315,7 +315,7 @@ position = Vector2(21, -4)
 [node name="PlayerDetectionArea" type="Area2D" parent="." groups=["player"]]
 position = Vector2(3, 33)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" groups=["player"]]
 position = Vector2(1, -31)
 shape = SubResource("CircleShape2D_0owmy")
 

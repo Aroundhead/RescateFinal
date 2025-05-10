@@ -26,6 +26,8 @@ var last_checkpoint_position: Vector2 = Vector2.ZERO
 var has_checkpoint := false
 
 func _ready():
+	print("👤 Player está en grupos:", get_groups())
+
 	movement = preload("res://scripts/player/player_movement.gd").new(self)
 	shooter = preload("res://scripts/player/player_shooting.gd").new(self)
 	health = preload("res://scripts/common/HealthComponent.gd").new(self)
@@ -55,7 +57,7 @@ func respawn():
 		global_position = last_checkpoint_position
 		print("📍 Respawn en último checkpoint:", last_checkpoint_position)
 	else:
-		global_position = Vector2(100, 100)  # Posición inicial predeterminada
+		global_position = Vector2(4000, 100)  # Posición inicial predeterminada
 		print("🔁 Respawn en punto inicial")
 
 func _unhandled_input(event):

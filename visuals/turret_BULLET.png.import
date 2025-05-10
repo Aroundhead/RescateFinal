@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci0lyj6nq5ub0"
-path="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_02.png-b018e1c2694c67ca292e361672b8c862.ctex"
+uid="uid://bqwxbcsqy4vek"
+path="res://.godot/imported/turret_BULLET.png-0cd05ed4b8f9723f0f6936fef41bd579.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/enemies/All_Fire_Bullet_Pixel_16x16_02.png"
-dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_02.png-b018e1c2694c67ca292e361672b8c862.ctex"]
+source_file="res://visuals/turret_BULLET.png"
+dest_files=["res://.godot/imported/turret_BULLET.png-0cd05ed4b8f9723f0f6936fef41bd579.ctex"]
 
 [params]
 

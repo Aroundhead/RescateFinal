@@ -40,7 +40,9 @@ func die():
 
 	if owner.has_node("AnimatedSprite2D"):
 		owner.get_node("AnimatedSprite2D").play("die")
-
+	elif owner.has_method("die"):
+		owner.die() 
+		
 	owner.set_physics_process(false)
 
 func _on_animation_finished():

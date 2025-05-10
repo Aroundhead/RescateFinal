@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br7kobw40050v"
-path="res://.godot/imported/Run.png-6e6fdbd1887ffa2764e74327ce19c262.ctex"
+uid="uid://chv5x1ubmqijn"
+path="res://.godot/imported/turret_BASE.png-3bf6c1cc5edfb691aa543a1aa25e65cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/enemies/Run.png"
-dest_files=["res://.godot/imported/Run.png-6e6fdbd1887ffa2764e74327ce19c262.ctex"]
+source_file="res://visuals/turret_BASE.png"
+dest_files=["res://.godot/imported/turret_BASE.png-3bf6c1cc5edfb691aa543a1aa25e65cf.ctex"]
 
 [params]
 

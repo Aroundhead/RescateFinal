@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://muw4v51u7fwe"
-path="res://.godot/imported/Idle.png-794a69554c287757afa675df3517a723.ctex"
+uid="uid://cwiqarxpagvyy"
+path="res://.godot/imported/walk.png-d3b22ad2318e1acded0ae7e123bf3744.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/enemies/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-794a69554c287757afa675df3517a723.ctex"]
+source_file="res://assets/sprites/level2Enemies/walk.png"
+dest_files=["res://.godot/imported/walk.png-d3b22ad2318e1acded0ae7e123bf3744.ctex"]
 
 [params]
 

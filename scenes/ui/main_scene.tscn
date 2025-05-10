@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqt83lnifkips"]
+[gd_scene load_steps=4 format=3 uid="uid://cqt83lnifkips"]
 
 [ext_resource type="Texture2D" uid="uid://deao1yc88cv0u" path="res://assets/img/rescatebg.png" id="1_6gqhb"]
+[ext_resource type="Script" uid="uid://ceby50wox3vk8" path="res://scripts/common/main_scene.gd" id="1_kbhqf"]
 [ext_resource type="FontFile" uid="uid://d01l2o17g7jcc" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_kbhqf"]
 
 [node name="MainScene" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kbhqf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://4kbdgk41smvm"]
+
+[ext_resource type="Script" uid="uid://bsif6efoercqp" path="res://scripts/enemies/enemyboss/explosion.gd" id="1_82hkh"]
+[ext_resource type="Shader" uid="uid://c7vf2cgyslfce" path="res://scenes/enemies/explosion.gdshader" id="1_l77qx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_82hkh"]
+shader = ExtResource("1_l77qx")
+shader_parameter/time = 0.0
+shader_parameter/max_radius = 1.0
+shader_parameter/fade_time = 0.5
+shader_parameter/explosion_color = Color(1, 0.6, 0.1, 1)
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_82hkh")
+
+[node name="FX" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_82hkh")
+offset_left = -54.0
+offset_top = -63.0
+offset_right = 52.0
+offset_bottom = 27.0
