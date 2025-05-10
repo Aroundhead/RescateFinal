@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cwiqarxpagvyy" path="res://assets/sprites/level2Enemies/walk.png" id="6_lwm74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x226"]
-size = Vector2(613, 74)
+size = Vector2(661.857, 75.7143)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0h1o"]
 atlas = ExtResource("1_otlbw")
@@ -366,7 +366,7 @@ script = ExtResource("1_3x226")
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["EnemyLV2"]]
-position = Vector2(32.5, 27)
+position = Vector2(8.07144, 27.8571)
 shape = SubResource("RectangleShape2D_3x226")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

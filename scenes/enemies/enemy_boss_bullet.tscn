@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://drvggg35hdkek"]
+
+[ext_resource type="Script" uid="uid://cwlrbwpsdy3mh" path="res://scripts/enemies/enemyboss/enemy_boss_bullet.gd" id="1_s3g7u"]
+[ext_resource type="PackedScene" uid="uid://4kbdgk41smvm" path="res://scenes/enemies/explosion.tscn" id="2_1h4yl"]
+[ext_resource type="Texture2D" uid="uid://c2aj0in0f4o3t" path="res://assets/sprites/enemies/EnemyBoss1/bombardilobomb.png" id="2_dwlcs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1h4yl"]
+
+[node name="EnemyBossBullet" type="Area2D"]
+script = ExtResource("1_s3g7u")
+explosion_scene = ExtResource("2_1h4yl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.124994, -2.125)
+scale = Vector2(0.0524902, 0.0505371)
+texture = ExtResource("2_dwlcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 9
+visibility_layer = 9
+position = Vector2(-0.124994, -0.124996)
+shape = SubResource("CircleShape2D_1h4yl")
+
+[node name="Timer" type="Timer" parent="."]

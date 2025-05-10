@@ -142,7 +142,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rtl8c"]
 radius = 2.0
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Area2D"]
 script = ExtResource("1_v8qja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -151,8 +151,10 @@ sprite_frames = SubResource("SpriteFrames_gofb6")
 animation = &"PowerUpLaser"
 frame_progress = 0.686884
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rtl8c")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(2, -4)
+target_position = Vector2(0, 5)

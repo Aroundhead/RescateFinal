@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnntrv8w4k4hv"]
+[gd_scene load_steps=6 format=3 uid="uid://rh3mocxus88e"]
 
 [ext_resource type="Texture2D" uid="uid://chv5x1ubmqijn" path="res://visuals/turret_BASE.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://cot70r387ydb2" path="res://visuals/turret_FACE.png" id="2"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b456eirt0mdwp" path="res://scripts/enemies/Turret.gd" id="3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccmgc"]
-radius = 243.403
+radius = 521.018
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("3")
@@ -31,3 +31,5 @@ one_shot = true
 shape = SubResource("CircleShape2D_ccmgc")
 
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_area_exited"]

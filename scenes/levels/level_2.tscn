@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://clyckb22rbb7a"]
+[gd_scene load_steps=18 format=4 uid="uid://c78rqkhrdvjrx"]
 
 [ext_resource type="Texture2D" uid="uid://dokx2l5mxfw57" path="res://assets/img/Level2/plx-1.png" id="1_8qukl"]
 [ext_resource type="Texture2D" uid="uid://us2puf5ic6qr" path="res://assets/img/Level2/plx-2.png" id="2_3p04p"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bs3hu52t7gb6e" path="res://scenes/player/player.tscn" id="7_r88tb"]
 [ext_resource type="Script" uid="uid://bvfm6k7ojxfqw" path="res://scripts/UI/camera_2d.gd" id="8_1yj8c"]
 [ext_resource type="Texture2D" uid="uid://n1pom6ac8m8b" path="res://assets/img/Level2/tree2.png" id="8_qsp8v"]
-[ext_resource type="PackedScene" uid="uid://cnntrv8w4k4hv" path="res://scenes/player/Turret.tscn" id="11_nt80m"]
+[ext_resource type="PackedScene" uid="uid://rh3mocxus88e" path="res://scenes/player/Turret.tscn" id="11_nt80m"]
 [ext_resource type="PackedScene" uid="uid://bio4wqxbgby7x" path="res://scenes/enemies/Level2/Enemy.tscn" id="12_tv7cl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qukl"]
@@ -1202,14 +1202,8 @@ script = ExtResource("8_1yj8c")
 [node name="EnemySpawnMarker" type="Marker2D" parent="."]
 position = Vector2(1311, 567)
 
-[node name="Turret" parent="." instance=ExtResource("11_nt80m")]
-position = Vector2(878, 476)
-
-[node name="Turret2" parent="." instance=ExtResource("11_nt80m")]
-position = Vector2(387, 425)
-
-[node name="Turret3" parent="." instance=ExtResource("11_nt80m")]
-position = Vector2(1905, 527)
-
 [node name="Enemy" parent="." instance=ExtResource("12_tv7cl")]
 position = Vector2(518, 543)
+
+[node name="Turret" parent="." instance=ExtResource("11_nt80m")]
+position = Vector2(101, 498)

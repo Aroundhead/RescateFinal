@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwgw53uu36qck"]
+
+[ext_resource type="Texture2D" uid="uid://dhg306pai7g54" path="res://assets/img/foreground/Jump_Pwp.png" id="1_u5axp"]
+[ext_resource type="Script" uid="uid://dugt7h2xo5do8" path="res://scripts/player/PowerUp.gd" id="1_vdtji"]
+[ext_resource type="Shader" uid="uid://nbck6mumftia" path="res://scenes/player/power_up.gdshader" id="2_upmio"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_44ll4"]
+shader = ExtResource("2_upmio")
+shader_parameter/time = 0.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_width = 0.25
+shader_parameter/glow_strength = 1.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdtji"]
+size = Vector2(16, 16)
+
+[node name="PowerUp" type="Area2D"]
+script = ExtResource("1_vdtji")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_44ll4")
+texture = ExtResource("1_u5axp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vdtji")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
