@@ -52,14 +52,6 @@ region = Rect2(256, 0, 128, 128)
 atlas = ExtResource("2_3x226")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kr7tj"]
-atlas = ExtResource("3_kng6l")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mvwpo"]
-atlas = ExtResource("3_kng6l")
-region = Rect2(128, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhtwg"]
 atlas = ExtResource("4_rv0kh")
 region = Rect2(0, 0, 128, 128)
@@ -184,6 +176,14 @@ region = Rect2(1152, 0, 128, 128)
 atlas = ExtResource("6_lwm74")
 region = Rect2(1280, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr7tj"]
+atlas = ExtResource("3_kng6l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvwpo"]
+atlas = ExtResource("3_kng6l")
+region = Rect2(128, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wpcvj"]
 animations = [{
 "frames": [{
@@ -205,7 +205,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kb1ev")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 10.0
 }, {
@@ -222,20 +222,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_prpd6")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack2",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kr7tj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mvwpo")
-}],
-"loop": true,
-"name": &"Dead",
-"speed": 5.0
 }, {
 "frames": [],
 "loop": true,
@@ -308,7 +297,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_av1oj")
 }],
-"loop": true,
+"loop": false,
 "name": &"Run",
 "speed": 10.0
 }, {
@@ -346,9 +335,20 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gikg0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Walk",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr7tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvwpo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kng6l"]
@@ -372,7 +372,7 @@ shape = SubResource("RectangleShape2D_3x226")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wpcvj")
-animation = &"Walk"
+animation = &"die"
 
 [node name="detectionarea" type="Area2D" parent="."]
 
@@ -384,9 +384,9 @@ shape = SubResource("RectangleShape2D_kng6l")
 position = Vector2(14.5, 15.5)
 shape = SubResource("RectangleShape2D_rv0kh")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="HitBoxCollision" type="CollisionShape2D" parent="HitBox" groups=["EnemyLV2"]]
+[node name="HitBoxCollision" type="CollisionShape2D" parent="Hitbox" groups=["EnemyLV2"]]
 position = Vector2(1, 28)
 shape = SubResource("RectangleShape2D_412si")
 
@@ -400,4 +400,4 @@ offset_bottom = -20.0
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_detection_area_area_exited"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

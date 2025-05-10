@@ -8,11 +8,12 @@ extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var detection_area = $detectionarea
-@onready var hitbox = $HitBox
+@onready var hitbox = $Hitbox
 @onready var floor_ray = $FloorRay
 @onready var attack_area = $AttackArea
-@onready var health_bar = $HealthBar  # Asegúrate de tener este nodo
+@onready var health_bar = $HealthBar
 
+var is_dead := false
 var patrol_direction := 1
 var patrol_distance := 50
 var start_position := Vector2.ZERO
@@ -34,6 +35,9 @@ func _ready():
 	health.init()
 
 func _physics_process(delta):
+	if is_dead:
+		return  # ⛔ Detener lógica si está muerto
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -100,11 +104,20 @@ func _on_detection_area_area_exited(area: Area2D):
 		print("👋 Jugador fuera de rango.")
 
 func _on_hitbox_area_entered(area: Area2D):
-	var parent = area.get_parent()
-	if parent.is_in_group("PlayerBullet"):
+	print("🔥 Área entrante:", area.name)
+	if area.is_in_group("PlayerBullet"):
+		print("💥 Bala detectada por el enemigo")
 		health.take_damage(1)
-		parent.queue_free()
+		area.queue_free()
 
 func die():
+	if is_dead:
+		return
+	is_dead = true
+	print("☠️ MUERTE ACTIVADA")
 	sprite.play("Dead")
-	queue_free()
+
+
+func _on_AnimatedSprite2D_animation_finished():
+	if sprite.animation == "Dead":
+		queue_free()

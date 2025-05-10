@@ -47,7 +47,7 @@ func _physics_process(delta):
 		shoot()
 
 func shoot():
-	print("💥 Disparo")
+
 	rayCast.enabled = false
 
 	if bullet_scene:
@@ -66,7 +66,7 @@ func _on_area_entered(area: Area2D):
 		target = parent
 		player_in_range = true
 
-func _on_area_exited(area: Area2D):
+func _on_area_exited(area: Area2D):	
 	var parent = area.get_parent()
 	if parent == target:
 		print("🚪 Jugador salió del rango (desde area)")
@@ -78,10 +78,11 @@ func _on_ReloadTimer_timeout():
 
 # 👇 Nueva función para recibir daño
 func _on_hitbox_area_entered(area: Area2D):
-	var parent = area.get_parent()
-	if parent.is_in_group("PlayerBullet"):
+	print("🔥 Área entrante:", area.name)
+	if area.is_in_group("PlayerBullet"):
+		print("💥 Bala detectada por el enemigo")
 		health.take_damage(1)
-		parent.queue_free()
+		area.queue_free()
 
 func die():
 	print("☠️ Torreta destruida")
