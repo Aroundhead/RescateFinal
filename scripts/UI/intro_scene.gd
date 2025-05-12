@@ -7,31 +7,28 @@ extends Control
 
 # Cinematic frames
 var frames = [
-	preload("res://assets/img/Intro_frame1.png"),
-	preload("res://assets/img/Intro_frame2.png"),
-	preload("res://assets/img/Intro_frame3.png"),
-	preload("res://assets/img/Intro_frame4.png"),
-	preload("res://assets/img/Intro_frame5.png"),
-	preload("res://assets/img/Intro_frame6.png")
+	preload("res://assets/img/level3/1.png"),
+	preload("res://assets/img/level3/2.png"),
+	preload("res://assets/img/level3/3.png"),
+	preload("res://assets/img/level3/4.png"),
+	preload("res://assets/img/level3/5.png")
 ]
 
 var narrations = [
-	"La guerra nos forjó...",
-	"En la batalla forjamos lazos eternos...",
-	"Hace tiempo que ella ya no esta aqui conmigo...",
-	"Algo no está bien esta noche...",
-	"Una coordenada desconocida aparece...",
-	"No hay forma en la que no reconozca esa ubicación."
+	"Después de la última batalla...",
+	"Finalmente la encontré, viva, atrapada en esa cápsula...",
+	"No podía creerlo... al tocarla, volvió en sí.",
+	"Volvimos a casa, dejando atrás el infierno.",
+	"Una nueva vida comienza ahora... juntos."
 ]
 
 var current_frame = 0
 
 # Animation settings
 var zoom_speed = 0.01
-var move_speed = Vector2(0.2, 0) # (x, y) per second
-var timer_interval = 4.0 # seconds each frame
+var move_speed = Vector2(0.2, 0)
+var timer_interval = 4.0
 
-# Guardamos nuestro tween activo
 var active_tween: Tween
 
 func _ready():
@@ -50,9 +47,8 @@ func update_frame():
 	label.text = narrations[current_frame]
 	texture_rect.scale = Vector2.ONE
 	texture_rect.position = Vector2.ZERO
-	texture_rect.modulate = Color(1, 1, 1, 0) # Comienza transparente
+	texture_rect.modulate = Color(1, 1, 1, 0)
 
-	# Crear Tween de fade in
 	if active_tween:
 		active_tween.kill()
 	active_tween = create_tween()
@@ -65,16 +61,14 @@ func _on_Timer_timeout():
 		current_frame += 1
 		update_frame()
 	else:
-		get_tree().change_scene_to_file("res://scenes/levels/Level1.tscn") # Cambia al primer nivel
+		get_tree().change_scene_to_file("res://scenes/ui/credits_scene.tscn") # <-- Cambiar a créditos o menú
 
 func _on_skip_pressed():
-	get_tree().change_scene_to_file("res://scenes/levels/Level1.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/credits_scene.tscn")
 
 func animate_frame():
 	if active_tween:
 		active_tween.kill()
 	active_tween = create_tween()
-	# Zoom lento
 	active_tween.tween_property(texture_rect, "scale", texture_rect.scale + Vector2(zoom_speed, zoom_speed), timer_interval)
-	# Movimiento suave
 	active_tween.tween_property(texture_rect, "position", texture_rect.position + move_speed * timer_interval * 100, timer_interval)

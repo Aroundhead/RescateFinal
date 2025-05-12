@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://6trt30dsa5bl"]
+
+[ext_resource type="Script" uid="uid://ebocnqkebh6w" path="res://scripts/enemies/level3/brain_boss.gd" id="1_5fkgv"]
+[ext_resource type="Texture2D" uid="uid://djbe50bs7s4v8" path="res://assets/sprites/level3enemies/1.png" id="1_rtvbf"]
+[ext_resource type="Texture2D" uid="uid://bqmgtvoeq2m1s" path="res://assets/sprites/level3enemies/2.png" id="2_4jnde"]
+[ext_resource type="PackedScene" uid="uid://1fd0qdw5x8sa" path="res://bullet.tscn" id="2_rgd42"]
+[ext_resource type="Texture2D" uid="uid://cj5liq6c67fjt" path="res://assets/sprites/level3enemies/3.png" id="3_5fkgv"]
+[ext_resource type="Texture2D" uid="uid://23i7kbs3nlgj" path="res://assets/sprites/level3enemies/4.png" id="4_rgd42"]
+[ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="5_4jnde"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niwrh"]
+atlas = ExtResource("1_rtvbf")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sit5"]
+atlas = ExtResource("2_4jnde")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvwpp"]
+atlas = ExtResource("3_5fkgv")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wglxv"]
+atlas = ExtResource("4_rgd42")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vew5x"]
+atlas = ExtResource("1_rtvbf")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7pn5"]
+atlas = ExtResource("2_4jnde")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25yk6"]
+atlas = ExtResource("3_5fkgv")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjtut"]
+atlas = ExtResource("4_rgd42")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp6sd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niwrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sit5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvwpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wglxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vew5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7pn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25yk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjtut")
+}],
+"loop": true,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fti7o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fkgv"]
+radius = 58.2151
+
+[node name="BrainBoss" type="CharacterBody2D"]
+script = ExtResource("1_5fkgv")
+bullet_scene = ExtResource("2_rgd42")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hp6sd")
+animation = &"open"
+frame_progress = 0.894043
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fti7o")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 110)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 787.0
+offset_right = 928.0
+offset_bottom = 23.0
+text = "cerebrinni linguini"
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_4jnde")]
+offset_left = 787.0
+offset_top = 25.0
+offset_right = 1027.0
+offset_bottom = 62.0
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_5fkgv")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

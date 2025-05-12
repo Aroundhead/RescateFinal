@@ -7,6 +7,9 @@ var from_enemy := false
 func set_target_position(target_position: Vector2):
 	direction = (target_position - global_position).normalized()
 
+func set_direction(dir: Vector2):
+	direction = dir.normalized()
+
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		position += direction * speed * delta
@@ -15,7 +18,6 @@ func _physics_process(delta):
 		remove_from_group("PlayerBullet")
 		remove_from_group("EnemyBullet")
 		queue_free()
-
 
 func set_source(is_enemy: bool):
 	from_enemy = is_enemy

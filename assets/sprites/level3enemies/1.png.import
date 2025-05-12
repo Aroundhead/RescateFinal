@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deao1yc88cv0u"
-path="res://.godot/imported/rescatebg.png-54dc1db64794753dd88e89d837f2ad21.ctex"
+uid="uid://djbe50bs7s4v8"
+path="res://.godot/imported/1.png-131f76f2c1b93041bb0786dca4a765f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/rescatebg.png"
-dest_files=["res://.godot/imported/rescatebg.png-54dc1db64794753dd88e89d837f2ad21.ctex"]
+source_file="res://assets/sprites/level3enemies/1.png"
+dest_files=["res://.godot/imported/1.png-131f76f2c1b93041bb0786dca4a765f2.ctex"]
 
 [params]
 
