@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cn8huj0125u"]
+[gd_scene load_steps=18 format=4 uid="uid://cn8huj0125u"]
 
 [ext_resource type="PackedScene" uid="uid://bs3hu52t7gb6e" path="res://scenes/player/player.tscn" id="1_1pwbc"]
 [ext_resource type="Script" uid="uid://di06gpxghykhu" path="res://scenes/levels/level_1.gd" id="1_7d7pp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://br6qsirmq5kuy" path="res://assets/img/4-2.png" id="5_76cw8"]
 [ext_resource type="Texture2D" uid="uid://4035hjgae05y" path="res://assets/img/1.png" id="5_m00rq"]
 [ext_resource type="Texture2D" uid="uid://carawpnlsuao2" path="res://assets/img/5-2.png" id="6_m00rq"]
+[ext_resource type="Script" uid="uid://bdmmv4ll5tbpb" path="res://scenes/levels/camera_2d.gd" id="10_n5pya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4si1"]
 texture = ExtResource("2_j08sa")
@@ -718,10 +719,12 @@ tile_set = SubResource("TileSet_fh0io")
 
 [node name="Player" parent="." instance=ExtResource("1_1pwbc")]
 position = Vector2(237, 201)
+scale = Vector2(1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 6
 limit_bottom = 719
+script = ExtResource("10_n5pya")
 
 [node name="EnemySpawnMarker" type="Marker2D" parent="."]
 position = Vector2(838, 473)

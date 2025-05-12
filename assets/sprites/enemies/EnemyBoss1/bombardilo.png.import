@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjox2tx7qfl2h"
-path="res://.godot/imported/bombardilo.png-25b047987245344e7352e97f7a1d179a.ctex"
+path="res://.godot/imported/bombardilo.png-b44c26e7c853dfbe097e795542e83e55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/EnemyBoss1/bombardilo.png"
-dest_files=["res://.godot/imported/bombardilo.png-25b047987245344e7352e97f7a1d179a.ctex"]
+source_file="res://assets/sprites/Enemies/EnemyBoss1/bombardilo.png"
+dest_files=["res://.godot/imported/bombardilo.png-b44c26e7c853dfbe097e795542e83e55.ctex"]
 
 [params]
 

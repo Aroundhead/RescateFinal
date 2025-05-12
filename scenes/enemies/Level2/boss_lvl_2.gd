@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export var speed := 80
-@export var chase_speed := 60
+@export var chase_speed := 80
 @export var gravity := 500
-@export var max_health := 8
-@export var attack_distance := 50.0
+@export var max_health := 40
+@export var attack_distance := 100.0
 
 @onready var sprite = $AnimatedSprite2D
 @onready var detection_area = $detectionarea
@@ -63,27 +63,24 @@ func _physics_process(delta):
 
 func patrol(delta):
 	velocity.x = patrol_direction * speed
-	# Si llega a un borde, invierte dirección
-	if not floor_ray.is_colliding():
+
+	if is_on_floor() and not floor_ray.is_colliding():
+		# 🔁 Cambia dirección al detectar borde
 		patrol_direction *= -1
+		sprite.flip_h = patrol_direction == -1
 
-	# Flip visual (sprite + raycast + attack area)
-	var flip_dir = patrol_direction == -1
-	sprite.flip_h = flip_dir
-
-	var sign = -1 if flip_dir else 1
-	floor_ray.position.x = abs(floor_ray.position.x) * sign
-	attack_area.position.x = abs(attack_area.position.x) * sign
+		# Asegura que el raycast cambie de lado
+		var offset = abs(floor_ray.position.x)
+		floor_ray.position.x = offset * patrol_direction
 
 	sprite.play("Walk")
 
+
 func face_player():
 	if player_reference:
-		var is_left := player_reference.global_position.x < global_position.x
-		sprite.flip_h = is_left
-		
-
-
+		var dir := player_reference.global_position.x < global_position.x
+		sprite.flip_h = dir
+		floor_ray.position.x = abs(floor_ray.position.x) * (-1 if dir else 1)
 
 func attack_player():
 	if can_attack:
@@ -121,6 +118,7 @@ func _on_hit_box_area_entered(area: Area2D):
 func die():
 	print("☠️ Enemy muerto, reproduciendo animación")
 	sprite.play("die")
+	
 
 func _on_animation_finished():
 	if sprite.animation == "die" and health.is_dead:

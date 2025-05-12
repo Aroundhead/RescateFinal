@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var shoot_interval := 0.1
 @export var speed := 200
 @export var gravity := 500
-@export var base_jump_force := -200
+@export var base_jump_force := -300
 var jump_force: float
 
 @onready var bullet_spawn = $BulletSpawn
@@ -32,6 +32,8 @@ func _ready():
 	shooter = preload("res://scripts/player/player_shooting.gd").new(self)
 	health = preload("res://scripts/common/HealthComponent.gd").new(self)
 
+	health.died.connect(respawn)
+
 	movement.set_shooting_reference(shooter)
 	movement.init()
 	shooter.init()
@@ -45,6 +47,9 @@ func _physics_process(delta):
 	if global_position.y > 725: 
 		respawn()
 
+func take_damage(amount: int):
+	health.take_damage(amount)
+
 func _on_checkpoint_reached(pos: Vector2):
 	last_checkpoint_position = pos
 	has_checkpoint = true
@@ -57,7 +62,7 @@ func respawn():
 		global_position = last_checkpoint_position
 		print("📍 Respawn en último checkpoint:", last_checkpoint_position)
 	else:
-		global_position = Vector2(4000, 100)  # Posición inicial predeterminada
+		global_position = Vector2(-99, 579)  # Posición inicial predeterminada
 		print("🔁 Respawn en punto inicial")
 
 func _unhandled_input(event):

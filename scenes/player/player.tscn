@@ -1,9 +1,9 @@
 [gd_scene load_steps=46 format=3 uid="uid://bs3hu52t7gb6e"]
 
 [ext_resource type="Texture2D" uid="uid://8sgrjnps1ytt" path="res://assets/sprites/player/Idle.png" id="1_8afob"]
-[ext_resource type="Script" uid="uid://04oxn5e71iv" path="res://scripts/player/player.gd" id="1_75vfm"]
+[ext_resource type="Script" uid="uid://04oxn5e71iv" path="res://player.gd" id="1_75vfm"]
 [ext_resource type="Texture2D" uid="uid://cir0ntud8bvav" path="res://assets/sprites/player/Hurt.png" id="1_p47bc"]
-[ext_resource type="PackedScene" uid="uid://1fd0qdw5x8sa" path="res://bullet.tscn" id="2_0owmy"]
+[ext_resource type="PackedScene" uid="uid://1fd0qdw5x8sa" path="res://scenes/bullet.tscn" id="2_0owmy"]
 [ext_resource type="Texture2D" uid="uid://bsglj4wg0c50g" path="res://assets/sprites/player/Run.png" id="2_dovo2"]
 [ext_resource type="Texture2D" uid="uid://q4jjh0jin8o4" path="res://assets/sprites/player/Shot_1.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://r3bdadbx1mao" path="res://assets/sprites/player/Walk.png" id="4_p47bc"]
@@ -290,21 +290,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
-size = Vector2(8.5, 66)
+size = Vector2(10.25, 71)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0owmy"]
-radius = 31.0644
+radius = 47.2969
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_75vfm")
 bullet_scene = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -31)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"Idle"
+animation = &"die"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.875, -2.5)
 shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="Timer" type="Timer" parent="."]
@@ -321,7 +325,7 @@ shape = SubResource("CircleShape2D_0owmy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("8_qek5x")]
+[node name="HealthBar" parent="CanvasLayer" groups=["player"] instance=ExtResource("8_qek5x")]
 offset_left = 23.0
 offset_top = 29.0
 offset_right = 245.0

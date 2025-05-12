@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="8_kng6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x226"]
-size = Vector2(666.667, 143.333)
+size = Vector2(661.857, 75.7143)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0h1o"]
 atlas = ExtResource("1_otlbw")
@@ -349,53 +349,52 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mvwpo")
 }],
-"loop": false,
+"loop": true,
 "name": &"die",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kng6l"]
-size = Vector2(661.667, 131.667)
+size = Vector2(89, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv0kh"]
-size = Vector2(40, 70)
+size = Vector2(49, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_412si"]
-size = Vector2(76.6667, 75)
+size = Vector2(116, 88)
 
-[node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.6, 0.6)
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_3x226")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["enemy"]]
-position = Vector2(-1.66666, 101.667)
+position = Vector2(8.07144, 27.8571)
 shape = SubResource("RectangleShape2D_3x226")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3.8147e-06, 4.76837e-07)
 sprite_frames = SubResource("SpriteFrames_wpcvj")
-animation = &"Attack"
+animation = &"die"
+frame_progress = 0.41559
 
-[node name="detectionarea" type="Area2D" parent="." groups=["enemy"]]
+[node name="detectionarea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionarea"]
-position = Vector2(-2.49999, 109.167)
+position = Vector2(1, 24)
 shape = SubResource("RectangleShape2D_kng6l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 26.6667)
+position = Vector2(14.5, 15.5)
 shape = SubResource("RectangleShape2D_rv0kh")
 
-[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
+[node name="HitBox" type="Area2D" parent="."]
 
 [node name="HitBoxCollision" type="CollisionShape2D" parent="HitBox" groups=["enemy"]]
-position = Vector2(0, 25.8333)
+position = Vector2(1, 28)
 shape = SubResource("RectangleShape2D_412si")
 
 [node name="FloorRay" type="RayCast2D" parent="."]
-position = Vector2(0, 13.3333)
 
 [node name="HealthBar" parent="." instance=ExtResource("8_kng6l")]
 offset_left = -16.0
