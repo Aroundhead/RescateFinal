@@ -1,9 +1,21 @@
 extends Area2D
 
 @export var speed = 600  
+@export var shoot_sound: AudioStream
+
 var direction = Vector2.ZERO  
 var from_enemy := false  
 
+func _ready():
+	if shoot_sound:
+		print("🔊 SHOOT: sonido asignado correctamente")
+		var sfx = AudioStreamPlayer.new()
+		sfx.stream = shoot_sound
+		add_child(sfx)
+		sfx.play()
+	else:
+		print("❌ SHOOT: sonido NO asignado")
+		
 func set_target_position(target_position: Vector2):
 	direction = (target_position - global_position).normalized()
 

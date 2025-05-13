@@ -4,6 +4,11 @@ extends Control
 @onready var quit_button: Button = $CanvasLayer/PlayButton/QuitButton
 
 func _ready():
+	var song = preload("res://assets/sfx/mainmenu.mp3")
+	MusicManager.player.stop()
+	MusicManager.player.stream = song
+	MusicManager.player.play()
+	
 	play_button.pressed.connect(_on_play_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 

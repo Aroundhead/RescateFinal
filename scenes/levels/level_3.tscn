@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://5tp4u5f34rbw"]
+[gd_scene load_steps=12 format=4 uid="uid://5tp4u5f34rbw"]
 
 [ext_resource type="Script" uid="uid://dbrvsemiq8u35" path="res://scripts/UI/level_3.gd" id="1_0qepi"]
 [ext_resource type="Texture2D" uid="uid://635emslcrvuq" path="res://assets/img/lab_tileset_LITE.png" id="1_o8c3j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c08y565eiju00" path="res://assets/img/level3/wifetrapped.jpg" id="3_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://dwgw53uu36qck" path="res://scenes/player/power_up.tscn" id="3_ugcn1"]
 [ext_resource type="PackedScene" uid="uid://cvf5rh7yi662m" path="res://scenes/levels/checkpoint.tscn" id="4_pimnq"]
+[ext_resource type="Texture2D" uid="uid://c20utoym63wu1" path="res://assets/img/level3/back.png" id="7_pimnq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44gv1"]
 texture = ExtResource("1_o8c3j")
@@ -385,10 +386,12 @@ texture = ExtResource("3_0ljxa")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1080, 720)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_right = 1080.0
 offset_bottom = 720.0
+texture = ExtResource("7_pimnq")
 
 [node name="FirstPowerUp" type="Marker2D" parent="ParallaxBackground"]
 position = Vector2(81, 473)
@@ -414,11 +417,7 @@ position = Vector2(3049, 473)
 [node name="FirstPowerUp" type="Marker2D" parent="."]
 position = Vector2(81, 473)
 
-[node name="FirstPowerUp2" type="Marker2D" parent="."]
-position = Vector2(81, 473)
-
-[node name="FirstPowerUp3" type="Marker2D" parent="."]
-position = Vector2(81, 473)
-
 [node name="EnemySpawnMarker2" type="Marker2D" parent="."]
 position = Vector2(1234, 147)
+
+[node name="WolfSpawnMarker" type="Marker2D" parent="."]

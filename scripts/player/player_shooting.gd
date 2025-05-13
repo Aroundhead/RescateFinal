@@ -37,7 +37,9 @@ func shoot():
 			player.bullet_spawn.position = player.bullet_spawn_offset_left
 
 		var bullet = player.bullet_scene.instantiate()
-		player.get_tree().current_scene.add_child(bullet)
 		bullet.global_position = player.bullet_spawn.global_position
 		bullet.set_target_position(mouse_pos)
 		bullet.set_source(false)
+		bullet.shoot_sound = preload("res://assets/sfx/shoot.wav")  # ✅ aquí antes del add_child
+
+		player.get_tree().current_scene.add_child(bullet)  

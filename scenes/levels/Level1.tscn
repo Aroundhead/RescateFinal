@@ -717,7 +717,7 @@ tile_map_data = PackedByteArray("AAD4/wwAAAACAAYAAAD5/wwAAAADAAYAAAD6/wwAAAAEAAY
 tile_set = SubResource("TileSet_fh0io")
 
 [node name="Player" parent="." instance=ExtResource("1_1pwbc")]
-position = Vector2(237, 201)
+position = Vector2(245, 340)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 6

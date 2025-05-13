@@ -4,9 +4,9 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene
 
 @export var shoot_interval := 0.1
-@export var speed := 200
+@export var speed := 400
 @export var gravity := 500
-@export var base_jump_force := -200
+@export var base_jump_force := -400
 var jump_force: float
 
 @onready var bullet_spawn = $BulletSpawn
@@ -25,6 +25,12 @@ var health
 var last_checkpoint_position: Vector2 = Vector2.ZERO
 var has_checkpoint := false
 
+func die():
+	print("☠️ El jugador ha muerto")
+	call_deferred("load_game_over")
+
+func load_game_over():
+	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
 func _ready():
 	print("👤 Player está en grupos:", get_groups())
 
@@ -66,7 +72,11 @@ func _unhandled_input(event):
 func _on_player_detection_area_area_entered(area: Area2D):
 	if area.is_in_group("EnemyBullet"):
 		health.take_damage(1)
-
+		
+func take_damage(amount: int):
+	print("💥 El jugador recibió", amount, "de daño")
+	health.take_damage(amount)
+	
 func apply_power_up(power_type: String, value: float):
 	print("🏷 Este jugador (ID):", self.get_instance_id())
 

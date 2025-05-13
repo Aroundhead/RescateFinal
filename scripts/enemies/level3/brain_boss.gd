@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed := 100
 @export var move_range := 400
 @export var bullet_scene: PackedScene
-@export var max_health := 10
+@export var max_health := 100
 @export var bullet_hell_count := 24  # Número de balas en el círculo
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dd502fr56wnxa" path="res://scenes/ui/health_bar.tscn" id="8_kng6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x226"]
-size = Vector2(661.857, 75.7143)
+size = Vector2(666.667, 143.333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0h1o"]
 atlas = ExtResource("1_otlbw")
@@ -205,7 +205,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kb1ev")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack",
 "speed": 10.0
 }, {
@@ -222,7 +222,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_prpd6")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack2",
 "speed": 10.0
 }, {
@@ -297,7 +297,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_av1oj")
 }],
-"loop": false,
+"loop": true,
 "name": &"Run",
 "speed": 10.0
 }, {
@@ -335,13 +335,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gikg0")
 }],
-"loop": false,
+"loop": true,
 "name": &"Walk",
 "speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kr7tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvwpo")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mvwpo")
@@ -352,52 +355,55 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kng6l"]
-size = Vector2(89, 79)
+size = Vector2(661.667, 131.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv0kh"]
-size = Vector2(49, 51)
+size = Vector2(40, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_412si"]
-size = Vector2(116, 88)
+size = Vector2(76.6667, 75)
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_3x226")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["EnemyLV2"]]
-position = Vector2(8.07144, 27.8571)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["enemy"]]
+position = Vector2(-1.66666, 101.667)
 shape = SubResource("RectangleShape2D_3x226")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.8147e-06, 4.76837e-07)
 sprite_frames = SubResource("SpriteFrames_wpcvj")
-animation = &"die"
+animation = &"Attack"
 
-[node name="detectionarea" type="Area2D" parent="."]
+[node name="detectionarea" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionarea"]
-position = Vector2(1, 24)
+position = Vector2(-2.49999, 109.167)
 shape = SubResource("RectangleShape2D_kng6l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14.5, 15.5)
+position = Vector2(5, 26.6667)
 shape = SubResource("RectangleShape2D_rv0kh")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
 
-[node name="HitBoxCollision" type="CollisionShape2D" parent="Hitbox" groups=["EnemyLV2"]]
-position = Vector2(1, 28)
+[node name="HitBoxCollision" type="CollisionShape2D" parent="HitBox" groups=["enemy"]]
+position = Vector2(0, 25.8333)
 shape = SubResource("RectangleShape2D_412si")
 
 [node name="FloorRay" type="RayCast2D" parent="."]
+position = Vector2(0, 13.3333)
 
 [node name="HealthBar" parent="." instance=ExtResource("8_kng6l")]
-offset_left = -25.7143
-offset_top = -30.0
-offset_right = 28.2857
-offset_bottom = -20.0
+offset_left = -16.0
+offset_top = -82.0
+offset_right = 18.0
+offset_bottom = -74.0
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_detection_area_area_exited"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

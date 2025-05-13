@@ -11,6 +11,14 @@ extends Node2D
 var boss_spawned := false
 
 func _ready():
+	var song = preload("res://assets/sfx/song1.mp3")
+	MusicManager.player.stop()
+	MusicManager.player.stream = song
+	MusicManager.player.play()
+	
+	if player:
+		player.last_checkpoint_position = Vector2(100, 100)
+		player.has_checkpoint = true
 	# Enemigos normales
 	if enemy_scene:
 		for child in get_children():
@@ -37,8 +45,9 @@ func _ready():
 				checkpoint.connect("checkpoint_reached", Callable(player, "_on_checkpoint_reached"))
 			
 func _process(_delta):
-	if not boss_spawned and abs(player.global_position.x - boss_marker.global_position.x) < 10:
-		spawn_boss()
+	if not boss_spawned and is_instance_valid(player) and boss_marker:
+		if abs(player.global_position.x - boss_marker.global_position.x) < 10:
+			spawn_boss()
 
 func spawn_boss():
 	if boss_scene:
@@ -47,3 +56,4 @@ func spawn_boss():
 		add_child(boss)
 		boss.global_position = boss_marker.global_position
 		boss_spawned = true
+		

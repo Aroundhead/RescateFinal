@@ -16,10 +16,10 @@ script = ExtResource("1_kbhqf")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = 5.0
-offset_top = -3.0
-offset_right = 1928.0
-offset_bottom = 1069.0
+offset_left = -5.0
+offset_top = -2.0
+offset_right = 2038.0
+offset_bottom = 1208.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_6gqhb")
 

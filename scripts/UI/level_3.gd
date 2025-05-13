@@ -11,6 +11,13 @@ extends Node2D
 var boss_spawned := false
 
 func _ready():
+	var song = preload("res://assets/sfx/song3.mp3")
+	MusicManager.player.stop()
+	MusicManager.player.stream = song
+	MusicManager.player.play()
+	if player:
+		player.last_checkpoint_position = Vector2(100, 100)
+		player.has_checkpoint = true
 	# Instanciar enemigos normales
 	if enemy_scene:
 		for child in get_children():

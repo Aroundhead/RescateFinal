@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene
 @export var max_health := 10
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_spawn: Marker2D = $Marker2D
 @onready var timer: Timer = $ShootTimer
 @onready var boss_health_bar = $CanvasLayer/HealthBar
@@ -78,7 +78,11 @@ func _on_hitbox_area_entered(area: Area2D):
 		area.queue_free()
 
 func die():
-	print("☠️ Boss ha muerto.")
-	timer.stop()
+	print("☠️ Boss Nivel 1 derrotado.")
 	set_physics_process(false)
-	queue_free()
+
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 1.0) # Fade opcional
+	await tween.finished
+
+	get_tree().change_scene_to_file("res://scenes/levels/level_2.tscn")

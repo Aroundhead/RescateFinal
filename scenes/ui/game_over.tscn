@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyppjy8bkukjj"]
+
+[ext_resource type="Texture2D" uid="uid://b0vfobne0irhs" path="res://assets/img/foreground/gameover.png" id="1_fu4wh"]
+[ext_resource type="Script" uid="uid://b7o1wmq4sf3x1" path="res://scripts/common/game_over.gd" id="1_x6o8e"]
+[ext_resource type="FontFile" uid="uid://d01l2o17g7jcc" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_x6o8e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfrx6"]
+font = ExtResource("2_x6o8e")
+font_size = 72
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_x6o8e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1024.0
+texture = ExtResource("1_fu4wh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 311.0
+offset_right = 775.0
+offset_bottom = 543.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_vfrx6")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="retryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 490.0
+offset_right = 422.0
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("2_x6o8e")
+theme_override_font_sizes/font_size = 32
+text = "Retry
+"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 489.0
+offset_right = 863.0
+offset_bottom = 578.0
+theme_override_fonts/font = ExtResource("2_x6o8e")
+theme_override_font_sizes/font_size = 32
+text = "Quit"

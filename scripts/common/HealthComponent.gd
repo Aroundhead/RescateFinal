@@ -38,11 +38,12 @@ func take_damage(amount: int):
 func die():
 	is_dead = true
 
-	if owner.has_node("AnimatedSprite2D"):
-		owner.get_node("AnimatedSprite2D").play("die")
-	elif owner.has_method("die"):
-		owner.die() 
-		
+	if owner.has_method("die"):
+		owner.die()  # 👈 Esto ahora llamará tu método die personalizado
+	else:
+		if owner.has_node("AnimatedSprite2D"):
+			owner.get_node("AnimatedSprite2D").play("die")
+
 	owner.set_physics_process(false)
 
 func _on_animation_finished():

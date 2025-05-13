@@ -1,43 +1,43 @@
 extends CharacterBody2D
 
-@export var speed := 30
+@export var speed := 80
 @export var chase_speed := 60
 @export var gravity := 500
-@export var max_health := 3
-@export var attack_distance := 30.0
+@export var max_health := 8
+@export var attack_distance := 50.0
 
 @onready var sprite = $AnimatedSprite2D
 @onready var detection_area = $detectionarea
-@onready var hitbox = $Hitbox
+@onready var hitbox = $HitBox
 @onready var floor_ray = $FloorRay
 @onready var attack_area = $AttackArea
 @onready var health_bar = $HealthBar
 
-var is_dead := false
 var patrol_direction := 1
-var patrol_distance := 50
 var start_position := Vector2.ZERO
 var player_in_range := false
 var player_reference: Node2D = null
-
-# COMPONENTES
-var health
-
 var is_reloading := false
 var can_attack := true
+
+# COMPONENTE DE VIDA
+var health
 
 func _ready():
 	start_position = global_position
 	sprite.play("Walk")
 	floor_ray.position.x = abs(floor_ray.position.x) * patrol_direction
 
+	# Inicializa vida
 	health = preload("res://scripts/common/HealthComponent.gd").new(self)
 	health.init()
 
-func _physics_process(delta):
-	if is_dead:
-		return  # ⛔ Detener lógica si está muerto
 
+	# Conectar señal de animación
+	if sprite.has_signal("animation_finished"):
+		sprite.animation_finished.connect(_on_animation_finished)
+
+func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -63,19 +63,27 @@ func _physics_process(delta):
 
 func patrol(delta):
 	velocity.x = patrol_direction * speed
-
-	if is_on_floor() and not floor_ray.is_colliding():
+	# Si llega a un borde, invierte dirección
+	if not floor_ray.is_colliding():
 		patrol_direction *= -1
-		sprite.flip_h = patrol_direction == -1
-		floor_ray.position.x = abs(floor_ray.position.x) * patrol_direction
+
+	# Flip visual (sprite + raycast + attack area)
+	var flip_dir = patrol_direction == -1
+	sprite.flip_h = flip_dir
+
+	var sign = -1 if flip_dir else 1
+	floor_ray.position.x = abs(floor_ray.position.x) * sign
+	attack_area.position.x = abs(attack_area.position.x) * sign
 
 	sprite.play("Walk")
 
 func face_player():
 	if player_reference:
-		var dir := player_reference.global_position.x < global_position.x
-		sprite.flip_h = dir
-		floor_ray.position.x = abs(floor_ray.position.x) * (-1 if dir else 1)
+		var is_left := player_reference.global_position.x < global_position.x
+		sprite.flip_h = is_left
+		
+
+
 
 func attack_player():
 	if can_attack:
@@ -86,8 +94,10 @@ func attack_player():
 				body.take_damage(1)
 				print("🩸 ¡Golpeó al jugador!")
 
-		await get_tree().create_timer(1.0).timeout
-		can_attack = true
+		# Verifica que aún esté en el árbol antes de usar get_tree()
+		if is_inside_tree():
+			await get_tree().create_timer(1.0).timeout
+			can_attack = true
 
 func _on_detection_area_area_entered(area: Area2D):
 	var parent = area.get_parent()
@@ -103,21 +113,17 @@ func _on_detection_area_area_exited(area: Area2D):
 		player_reference = null
 		print("👋 Jugador fuera de rango.")
 
-func _on_hitbox_area_entered(area: Area2D):
-	print("🔥 Área entrante:", area.name)
+func _on_hit_box_area_entered(area: Area2D):
 	if area.is_in_group("PlayerBullet"):
-		print("💥 Bala detectada por el enemigo")
+		print("💥 Bala impactó a:", name)
 		health.take_damage(1)
 		area.queue_free()
 
+
 func die():
-	if is_dead:
-		return
-	is_dead = true
-	print("☠️ MUERTE ACTIVADA")
-	sprite.play("Dead")
+	print("☠️ Enemy muerto, reproduciendo animación")
+	sprite.play("die")
 
-
-func _on_AnimatedSprite2D_animation_finished():
-	if sprite.animation == "Dead":
+func _on_animation_finished():
+	if sprite.animation == "die" and health.is_dead:
 		queue_free()

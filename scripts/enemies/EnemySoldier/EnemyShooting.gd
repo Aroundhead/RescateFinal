@@ -28,10 +28,12 @@ func shoot():
 	enemy.face_player()
 
 	var bullet = enemy.bullet_scene.instantiate()
-	enemy.get_parent().add_child(bullet)
 	bullet.global_position = enemy.bullet_spawn.global_position
 	bullet.set_target_position(enemy.player_reference.global_position)
 	bullet.set_source(true)
+	bullet.shoot_sound = preload("res://assets/sfx/shoot.wav")  # ✅ asignado antes
+
+	enemy.get_tree().current_scene.add_child(bullet)  # ✅ escena actual
 
 	if bullet.has_node("AnimatedSprite2D"):
 		bullet.get_node("AnimatedSprite2D").play("enemyAttack")
@@ -40,7 +42,6 @@ func shoot():
 
 	await enemy.get_tree().create_timer(0.5).timeout
 
-	# 🧠 Asegura que aún está vivo antes de seguir
 	if enemy.health.is_dead:
 		return
 

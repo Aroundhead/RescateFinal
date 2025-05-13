@@ -78,7 +78,6 @@ func _on_ReloadTimer_timeout():
 
 # 👇 Nueva función para recibir daño
 func _on_hitbox_area_entered(area: Area2D):
-	print("🔥 Área entrante:", area.name)
 	if area.is_in_group("PlayerBullet"):
 		print("💥 Bala detectada por el enemigo")
 		health.take_damage(1)

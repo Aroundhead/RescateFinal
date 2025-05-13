@@ -302,7 +302,7 @@ bullet_scene = ExtResource("2_0owmy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -31)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"Idle"
+animation = &"shot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p47bc")

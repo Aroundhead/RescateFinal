@@ -5,21 +5,23 @@ extends Control
 @onready var skip_button = $VBoxContainer/NinePatchRect/skipButton
 @onready var timer = $Timer
 
-# Cinematic frames
+# Cinematic frames (Intro)
 var frames = [
-	preload("res://assets/img/level3/1.png"),
-	preload("res://assets/img/level3/2.png"),
-	preload("res://assets/img/level3/3.png"),
-	preload("res://assets/img/level3/4.png"),
-	preload("res://assets/img/level3/5.png")
+	preload("res://assets/img/Intro_frame1.png"),
+	preload("res://assets/img/Intro_frame2.png"),
+	preload("res://assets/img/Intro_frame3.png"),
+	preload("res://assets/img/Intro_frame4.png"),
+	preload("res://assets/img/Intro_frame5.png"),
+	preload("res://assets/img/Intro_frame6.png")
 ]
 
 var narrations = [
-	"Después de la última batalla...",
-	"Finalmente la encontré, viva, atrapada en esa cápsula...",
-	"No podía creerlo... al tocarla, volvió en sí.",
-	"Volvimos a casa, dejando atrás el infierno.",
-	"Una nueva vida comienza ahora... juntos."
+	"La guerra nos cambio...",
+	"Aun así, nos teniamos a nosotros...",
+	"Ahora, nisiquiera ella esta aqui conmigo...",
+	"La noche se siente un poco extraña...",
+	"Esta coordenada... yo la conozco...",
+	"Te traeré de vuelta, mi vida."
 ]
 
 var current_frame = 0
@@ -61,10 +63,10 @@ func _on_Timer_timeout():
 		current_frame += 1
 		update_frame()
 	else:
-		get_tree().change_scene_to_file("res://scenes/ui/credits_scene.tscn") # <-- Cambiar a créditos o menú
+		get_tree().change_scene_to_file("res://scenes/levels/level1.tscn") # Cambia si tu primer nivel es otro
 
 func _on_skip_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/credits_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/level1.tscn")
 
 func animate_frame():
 	if active_tween:
